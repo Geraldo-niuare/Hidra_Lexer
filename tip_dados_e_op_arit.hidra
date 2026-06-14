@@ -1,0 +1,16 @@
+classe CalculoMatematico {
+    funcao principal() {
+        inteiro contador = 1;
+        inteiro total_vendas = 1500;
+        real preço = 49.99;
+        real taxa_iva = 0.23;
+        
+        real valor_iva = preço * taxa_iva;
+        real total = preço + valor_iva;
+        
+        inteiro resto_divisão = 10 % 3;
+        inteiro potenciação = 2 ** 3;
+        
+        contador++;
+    }
+}

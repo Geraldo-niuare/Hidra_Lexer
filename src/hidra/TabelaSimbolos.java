@@ -7,7 +7,7 @@ import java.util.Collection;
 /**
  * Tabela de Símbolos da linguagem Hidra.
  *
- * Implementada como HashMap (tabela de dispersão), conforme exigido pelo enunciado.
+ * Implementada como HashMap
  * Armazena identificadores reconhecidos durante a análise léxica.
  * Cada entrada associa o nome do identificador ao token IDENTIFICADOR e
  * ao número da linha da primeira ocorrência.
@@ -52,9 +52,6 @@ public class TabelaSimbolos {
     /**
      * Insere um novo identificador na tabela.
      * Se já existir, não substitui (mantém a primeira ocorrência).
-     * @param nome  nome do identificador (já em minúsculas)
-     * @param linha linha da primeira ocorrência
-     * @return a Entrada criada ou existente
      */
     public Entrada inserir(String nome, int linha) {
         if (!tabela.containsKey(nome)) {

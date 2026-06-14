@@ -1,10 +1,14 @@
 package hidra;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Classe principal do Analisador Léxico da linguagem Hidra.
@@ -21,26 +25,90 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        String codigo;
+        StringBuilder codigo = new StringBuilder();
+
+        Scanner scanner = new Scanner(System.in);
+        TabelaPalavrasReservadas tabelaReservadas = new TabelaPalavrasReservadas();
+        TabelaSimbolos           tabelaSimbolos   = new TabelaSimbolos();
+        String caminho;
+        int opcao=5;
+
 
         if (args.length > 0) {
             // Lê o ficheiro passado como argumento
-            codigo = new String(Files.readAllBytes(Paths.get(args[0])));
+            codigo = new StringBuilder(new String(Files.readAllBytes(Paths.get(args[0]))));
             System.out.println("Analisando ficheiro: " + args[0]);
         } else {
-            // Programa de teste embutido
-            codigo = programaTeste();
-            System.out.println("A usar programa de teste interno.");
+            while (opcao !=0){
+                System.out.println("""
+                ══════════════════════════════Analisador Léxico═════════════════════════════════════
+                Escolha uma opção da origem do código:
+                1 - Carregar um programa.
+                2 - Usar programa teste.
+                3 - Mostrar palavras reservadas.
+                0 - sair.
+                """);
+                opcao = scanner.nextInt();
+                List<TokenInfo> tokens;
+
+
+                switch (opcao){
+                    case 1:
+
+                        File file = inserirFicheiro();
+
+                        if(file != null){
+                            try(Scanner reader = new Scanner(file)){
+                                while (reader.hasNextLine()){
+                                    String data = reader.nextLine();
+                                    codigo.append("\n"+data);
+                                }
+
+                                System.out.println(codigo);
+                                System.out.println("A usar o código providenciado");
+                                System.out.println("─".repeat(60));
+                                tokens = analiseLexica(codigo.toString());
+                                exibirTokens(tokens);
+                                break;
+                            }catch (FileNotFoundException e){
+                                System.out.println("Ficheiro não encontrado");
+                                e.printStackTrace();
+                            }
+
+                        }else{
+                            System.out.println("carregue um ficheiro .hidra");
+                        }
+
+
+
+
+                        break;
+                    case 2:
+                        codigo = new StringBuilder(programaTeste());
+                        System.out.println("A usar código de teste interno.");
+                        System.out.println("─".repeat(60));
+                        tokens = analiseLexica(codigo.toString());
+                        exibirTokens(tokens);
+                        break;
+                    case 3:
+                        tabelaReservadas.imprimir();
+
+
+                        break;
+                }
+
+
+            }
+
         }
+    }
 
-        System.out.println("─".repeat(60));
-
-        // ── Inicializa componentes ─────────────────────────────────────────
+    //── Análise léxica ─────────────────────────────────────────────────
+    public static List<TokenInfo> analiseLexica(String codigo){
         TabelaPalavrasReservadas tabelaReservadas = new TabelaPalavrasReservadas();
         TabelaSimbolos           tabelaSimbolos   = new TabelaSimbolos();
         AnaLex                   anaLex           = new AnaLex(codigo, tabelaReservadas, tabelaSimbolos);
 
-        // ── Análise léxica ─────────────────────────────────────────────────
         List<TokenInfo> tokens = new ArrayList<>();
         TokenInfo t;
 
@@ -48,8 +116,11 @@ public class Main {
             t = anaLex.AnaLex();
             tokens.add(t);
         } while (t.getToken() != Token.EOF && t.getToken() != Token.DESCONHECIDO);
+        return tokens;
+    }
 
-        // ── Exibe tokens reconhecidos ──────────────────────────────────────
+    //── Listar tokens ─────────────────────────────────────────────────
+    public  static void exibirTokens(List<TokenInfo> tokens){
         System.out.println("\n══════════════════════════════════════════════════");
         System.out.println("  TOKENS RECONHECIDOS");
         System.out.println("══════════════════════════════════════════════════");
@@ -60,13 +131,13 @@ public class Main {
         for (TokenInfo tk : tokens) {
             if (tk.getToken() == Token.DESCONHECIDO) {
                 System.out.printf("  %-6d | %-20s | \"%s\"  ← ERRO LÉXICO%n",
-                    tk.getLinha(), tk.getToken(), tk.getAtributo());
+                        tk.getLinha(), tk.getToken(), tk.getAtributo());
                 erros++;
             } else if (tk.getToken() == Token.EOF) {
                 System.out.printf("  %-6d | %-20s |%n", tk.getLinha(), tk.getToken());
             } else if (tk.getAtributo() != null) {
                 System.out.printf("  %-6d | %-20s | \"%s\"%n",
-                    tk.getLinha(), tk.getToken(), tk.getAtributo());
+                        tk.getLinha(), tk.getToken(), tk.getAtributo());
             } else {
                 System.out.printf("  %-6d | %-20s |%n", tk.getLinha(), tk.getToken());
             }
@@ -76,12 +147,30 @@ public class Main {
         System.out.printf("  Total de tokens: %d  |  Erros léxicos: %d%n", tokens.size(), erros);
         System.out.println("══════════════════════════════════════════════════");
 
-        // ── Exibe tabelas ──────────────────────────────────────────────────
-        tabelaReservadas.imprimir();
-        tabelaSimbolos.imprimir();
     }
 
-    // ── Programa de teste ──────────────────────────────────────────────────────
+    public static File inserirFicheiro(){
+        Scanner scanner = new Scanner(System.in);
+        Pattern extension = Pattern.compile(".hidra$", Pattern.CASE_INSENSITIVE);
+
+        System.out.println("Insira o diretório em que armazenou o código");
+        String caminho = scanner.nextLine();
+        Matcher matcher = extension.matcher(caminho);
+        boolean isHidra = matcher.find();
+        File ficheiro = null;
+        if(isHidra){
+            ficheiro = new File(caminho);
+            return ficheiro;
+        }
+
+
+
+
+        return ficheiro;
+    }
+
+
+
 
     /**
      * Programa de teste que exercita as principais construções da linguagem Hidra.

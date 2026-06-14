@@ -7,7 +7,7 @@ package hidra;
  *   <número_da_linha, Token, Atributo>
  *
  * O atributo é:
- *   - O lexema original para IDENTIFICADOR, LIT_INTEIRO, LIT_REAL, LIT_TEXTO, LIT_CARACTERE
+ *   - O lexema original para IDENTIFICADOR (para variáveis), LIT_INTEIRO, LIT_REAL, LIT_TEXTO, LIT_CARACTERE
  *   - null para todos os outros tokens (operadores, palavras reservadas, delimitadores)
  */
 public class TokenInfo {
@@ -16,20 +16,27 @@ public class TokenInfo {
     private final Token  token;
     private final String atributo;
 
+    //Construtor com atributos
     public TokenInfo(int linha, Token token, String atributo) {
         this.linha    = linha;
         this.token    = token;
         this.atributo = atributo;
     }
 
-    /** Construtor sem atributo (para tokens sem valor associado). */
+    // Construtor sem atributo (para tokens sem valor associado).
     public TokenInfo(int linha, Token token) {
         this(linha, token, null);
     }
 
-    public int    getLinha()    { return linha;    }
-    public Token  getToken()    { return token;    }
-    public String getAtributo() { return atributo; }
+    public int    getLinha()    {
+        return linha;
+    }
+    public Token  getToken()    {
+        return token;
+    }
+    public String getAtributo() {
+        return atributo;
+    }
 
     @Override
     public String toString() {

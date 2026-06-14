@@ -1,0 +1,22 @@
+classe ControloFluxo {
+    funcao principal() {
+        booleano activo = verdadeiro;
+        inteiro idade = 20;
+        
+        se (idade >= 18 && activo == verdadeiro) {
+            mostrar("Acesso autorizado.");
+        } senao {
+            mostrar("Acesso negado.");
+        }
+        
+        inteiro stock = 3;
+        enquanto (stock > 0) {
+            mostrar("Item em stock: ", stock);
+            stock = stock - 1;
+        }
+        
+        para (inteiro i = 0; i < 5; i++) {
+            mostrar("Iteração: ", i);
+        }
+    }
+}
