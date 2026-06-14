@@ -1,0 +1,8 @@
+classe TesteInputOutput {
+    funcao principal() {
+        mostrar("--- Bem-vindo ao Sistema Hidra ---");
+        mostrar("Por favor, introduza o seu nome:");
+        texto nome = ler();
+        mostrar("Olá, ", nome, "! O analisador funciona!");
+    }
+}
