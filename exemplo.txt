@@ -1,0 +1,18 @@
+// Exemplo de programa Hidra
+classe Calculadora {
+
+    funcao somar(real a, real b) {
+        retorna a + b
+    }
+
+    funcao principal() {
+        real resultado = somar(10.5, 20.3)
+        mostrar("Resultado: ", resultado)
+
+        se (resultado > 30.0) {
+            mostrar("Maior que 30!")
+        } senao {
+            mostrar("Menor ou igual a 30.")
+        }
+    }
+}

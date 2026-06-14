@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Tabela de Palavras Reservadas da linguagem Hidra.
  *
- * Implementada como HashMap (tabela de dispersão), conforme exigido pelo enunciado.
+ * Implementada como HashMap  conforme exigido pelo enunciado.
  * Mapeia o lexema (em minúsculas) para o token correspondente.
  *
  * Como a linguagem é insensível a maiúsculas/minúsculas, todos os lexemas
@@ -74,42 +74,42 @@ public class TabelaPalavrasReservadas {
     /** Imprime a tabela de palavras reservadas com mapeamento Java. */
     public void imprimir() {
         System.out.println("\n══════════════════════════════════════════════════════════════");
-        System.out.println("  TABELA DE PALAVRAS RESERVADAS  (Hidra → Java)");
+        System.out.println("  TABELA DE PALAVRAS RESERVADAS Hidra");
         System.out.println("══════════════════════════════════════════════════════════════");
         System.out.printf("  %-14s | %-16s | %-28s | %s%n",
             "Lexema", "Token", "Equivalente Java", "Categoria");
         System.out.println("  " + "─".repeat(78));
 
         String[][] mapeamento = {
-            {"se",         "SE",         "if",                       "Controlo de fluxo"},
-            {"senao",      "SENAO",      "else",                     "Controlo de fluxo"},
-            {"para",       "PARA",       "for",                      "Controlo de fluxo"},
-            {"enquanto",   "ENQUANTO",   "while",                    "Controlo de fluxo"},
-            {"quebrar",    "QUEBRAR",    "break",                    "Controlo de fluxo"},
-            {"continuar",  "CONTINUAR",  "continue",                 "Controlo de fluxo"},
-            {"inteiro",    "INTEIRO",    "int",                      "Tipo de dado"},
-            {"real",       "REAL",       "double",                   "Tipo de dado"},
-            {"caractere",  "CARACTERE",  "char",                     "Tipo de dado"},
-            {"texto",      "TEXTO",      "String",                   "Tipo de dado"},
-            {"booleano",   "BOOLEANO",   "boolean",                  "Tipo de dado"},
-            {"verdadeiro", "VERDADEIRO", "true",                     "Literal lógico"},
-            {"falso",      "FALSO",      "false",                    "Literal lógico"},
-            {"mostrar",    "MOSTRAR",    "System.out.println()",     "E/S padrão"},
-            {"ler",        "LER",        "Scanner.nextLine()",       "E/S padrão"},
-            {"imprime",    "IMPRIME",    "System.out.print()",       "E/S padrão"},
-            {"classe",     "CLASSE",     "class",                    "Estrutura"},
-            {"funcao",     "FUNCAO",     "void (método)",            "Estrutura"},
-            {"retorna",    "RETORNA",    "return",                   "Estrutura"},
-            {"importar",   "IMPORTAR",   "import",                   "Estrutura"},
-            {"herda",      "HERDA",      "extends",                  "Estrutura OO"},
-            {"este",       "ESTE",       "this",                     "Estrutura OO"},
-            {"tente",      "TENTE",      "try",                      "Tratamento de erros"},
-            {"capture",    "CAPTURE",    "catch",                    "Tratamento de erros"},
+            {"se",         "SE",           "Controlo de fluxo"},
+            {"senao",      "SENAO",        "Controlo de fluxo"},
+            {"para",       "PARA",         "Controlo de fluxo"},
+            {"enquanto",   "ENQUANTO",     "Controlo de fluxo"},
+            {"quebrar",    "QUEBRAR",      "Controlo de fluxo"},
+            {"continuar",  "CONTINUAR",    "Controlo de fluxo"},
+            {"inteiro",    "INTEIRO",      "Tipo de dado"},
+            {"real",       "REAL",         "Tipo de dado"},
+            {"caractere",  "CARACTERE",    "Tipo de dado"},
+            {"texto",      "TEXTO",        "Tipo de dado"},
+            {"booleano",   "BOOLEANO",     "Tipo de dado"},
+            {"verdadeiro", "VERDADEIRO",   "Literal lógico"},
+            {"falso",      "FALSO",        "Literal lógico"},
+            {"mostrar",    "MOSTRAR",      "Saída padrão"},
+            {"ler",        "LER",          "Emtrada padrão"},
+            {"imprime",    "IMPRIME",      "E/S padrão"},
+            {"classe",     "CLASSE",       "Estrutura"},
+            {"funcao",     "FUNCAO",       "Estrutura"},
+            {"retorna",    "RETORNA",      "Estrutura"},
+            {"importar",   "IMPORTAR",     "Estrutura"},
+            {"herda",      "HERDA",        "Estrutura OO"},
+            {"este",       "ESTE",         "Estrutura OO"},
+            {"tente",      "TENTE",        "Tratamento de erros"},
+            {"capture",    "CAPTURE",      "Tratamento de erros"},
         };
 
         for (String[] row : mapeamento) {
-            System.out.printf("  %-14s | %-16s | %-28s | %s%n",
-                row[0], row[1], row[2], row[3]);
+            System.out.printf("  %-14s | %-16s | %s%n",
+                row[0], row[1], row[2]);
         }
         System.out.println("══════════════════════════════════════════════════════════════\n");
     }
