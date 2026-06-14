@@ -31,71 +31,74 @@ public class Main {
         TabelaPalavrasReservadas tabelaReservadas = new TabelaPalavrasReservadas();
         TabelaSimbolos           tabelaSimbolos   = new TabelaSimbolos();
         String caminho;
-        int opcao;
+        int opcao=5;
+
+
         if (args.length > 0) {
             // Lê o ficheiro passado como argumento
             codigo = new StringBuilder(new String(Files.readAllBytes(Paths.get(args[0]))));
             System.out.println("Analisando ficheiro: " + args[0]);
         } else {
-
-
-
-            System.out.println("""
+            while (opcao !=0){
+                System.out.println("""
                 ══════════════════════════════Analisador Léxico═════════════════════════════════════
                 Escolha uma opção da origem do código:
                 1 - Carregar um programa.
                 2 - Usar programa teste.
                 3 - Mostrar palavras reservadas.
+                0 - sair.
                 """);
-            opcao = scanner.nextInt();
-            List<TokenInfo> tokens;
+                opcao = scanner.nextInt();
+                List<TokenInfo> tokens;
 
 
-            switch (opcao){
-                case 1:
+                switch (opcao){
+                    case 1:
 
-                    File file = inserirFicheiro();
+                        File file = inserirFicheiro();
 
-                    if(file.isFile()){
-                        try(Scanner reader = new Scanner(file)){
-                            while (reader.hasNextLine()){
-                                String data = reader.nextLine();
-                                codigo.append("\n"+data);
+                        if(file != null){
+                            try(Scanner reader = new Scanner(file)){
+                                while (reader.hasNextLine()){
+                                    String data = reader.nextLine();
+                                    codigo.append("\n"+data);
+                                }
+
+                                System.out.println(codigo);
+                                System.out.println("A usar o código providenciado");
+                                System.out.println("─".repeat(60));
+                                tokens = analiseLexica(codigo.toString());
+                                exibirTokens(tokens);
+                                break;
+                            }catch (FileNotFoundException e){
+                                System.out.println("Ficheiro não encontrado");
+                                e.printStackTrace();
                             }
 
-                            System.out.println(codigo);
-                            System.out.println("A usar o código providenciado");
-                            System.out.println("─".repeat(60));
-                            tokens = analiseLexica(codigo.toString());
-                            exibirTokens(tokens);
-                            break;
-                        }catch (FileNotFoundException e){
-                            System.out.println("Ficheiro não encontrado");
-                            e.printStackTrace();
+                        }else{
+                            System.out.println("carregue um ficheiro .hidra");
                         }
 
-                    }else{
-                        System.out.println("carregue um ficheiro .hidra");
-                    }
 
 
 
+                        break;
+                    case 2:
+                        codigo = new StringBuilder(programaTeste());
+                        System.out.println("A usar código de teste interno.");
+                        System.out.println("─".repeat(60));
+                        tokens = analiseLexica(codigo.toString());
+                        exibirTokens(tokens);
+                        break;
+                    case 3:
+                        tabelaReservadas.imprimir();
 
-                    break;
-                case 2:
-                    codigo = new StringBuilder(programaTeste());
-                    System.out.println("A usar código de teste interno.");
-                    System.out.println("─".repeat(60));
-                    tokens = analiseLexica(codigo.toString());
-                    exibirTokens(tokens);
-                    break;
-                case 3:
-                    tabelaReservadas.imprimir();
+
+                        break;
+                }
 
 
-                    break;
             }
-
 
         }
     }
@@ -154,9 +157,9 @@ public class Main {
         String caminho = scanner.nextLine();
         Matcher matcher = extension.matcher(caminho);
         boolean isHidra = matcher.find();
-        File ficheiro = new File(caminho);
+        File ficheiro = null;
         if(isHidra){
-            //ficheiro = new File(caminho);
+            ficheiro = new File(caminho);
             return ficheiro;
         }
 
