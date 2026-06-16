@@ -1,0 +1,9 @@
+classe Financas {
+    funcao getSaldo() {
+        // ERRO LÉXICO 1: O símbolo '$' não é reconhecido pelo Hidra
+        real saldo_inicial = $500.00; 
+
+        
+        mostrar(saldo_inicial);
+    }
+}

@@ -1,0 +1,34 @@
+// Programa 2 — Erros em Literais e Identificadores
+// Ficheiro: programa_erros2.hidra
+
+classe TesteErros2 {
+
+    funcao principal() {
+
+        // ERRO 1: Literal real sem parte decimal — .5 é inválido
+        real taxa = .5
+
+        // ERRO 2: Literal real sem parte inteira — 3. é inválido
+        real pi = 3.
+
+        // ERRO 3: Identificador começa com dígito
+        inteiro 2trimestre = 1000
+
+        // ERRO 4: Hífen não é permitido em identificadores
+        real taxa-iva = 0.23
+
+        // ERRO 5: Barra invertida isolada fora de texto
+        inteiro k = 10 \ 2
+
+        // ERRO 6: Símbolo | isolado (não é || )
+        booleano res = verdadeiro | falso
+
+        // ERRO 7: Símbolo & isolado (não é &&)
+        booleano cond = verdadeiro & falso
+
+        // ERRO 8: Acento em posição inválida (caractere fora de contexto)
+        inteiro valor´ = 50
+
+        mostrar("Programa com erros concluido")
+    }
+}
