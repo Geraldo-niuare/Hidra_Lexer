@@ -1,0 +1,55 @@
+// Programa de teste do AnaLex Hidra    
+             /* Testa todas as categorias de tokens */    
+                 
+             classe GestaoVendas {    
+                 
+                 funcao calcularIva(real preco, real taxa) {    
+                     retorna preco * taxa    
+                 }    
+                 
+                 funcao principal() {    
+                     // Declaração de variáveis    
+                     inteiro quantidade = 50    
+                     real    preco      = 99.90    
+                     texto   produto    = "Caderno A4"     
+                     booleano emStock   = verdadeiro    
+                     caractere inicial  = 'C'    
+                 
+                     // Operações aritméticas    
+                     real total = quantidade * preco    
+                     real iva   = calcularIva(total, 0.23)    
+                     total = total   iva    
+                 
+                     // Estrutura condicional    
+                     se (total > 5000.0) {    
+                         mostrar(" Volume elevado: " , total)    
+                     } senao {    
+                         mostrar(" Volume normal: " , total)    
+                     }    
+                 
+                     // Ciclo para    
+                     para (inteiro i = 0; i < 3; i  ) {    
+                         mostrar( " Iteração:  " , i)    
+                     }    
+                 
+                     // Ciclo enquanto    
+                     inteiro contador = 0    
+                     enquanto (contador < 5) {    
+                         contador      
+                     }    
+                 
+                     // Tratamento de erros    
+                     tente {    
+                         inteiro resultado = 10 / 0    
+                     } capture (erro) {    
+                         mostrar( " Erro: divisão por zero! " )    
+                     }    
+                 
+                     // Operadores lógicos    
+                     booleano valido = (quantidade > 0) && (preco > 0.0)    
+                     booleano inativo = !emStock    
+                 
+                     mostrar( " Produto:  " , produto)    
+                     mostrar( " Total com IVA:  " , total)    
+                 }    
+             }  

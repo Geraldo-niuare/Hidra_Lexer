@@ -1,0 +1,189 @@
+══════════════════════════════════════════════════
+  TOKENS RECONHECIDOS
+══════════════════════════════════════════════════
+  Linha  | Token                | Atributo
+  ──────────────────────────────────────────────────
+  2      | COMENT               | "Programa de teste do AnaLex Hidra"
+  3      | MULT_COMENT          | "Testa todas as categorias de tokens"
+  5      | CLASSE               |
+  5      | IDENTIFICADOR        | "gestaovendas"
+  5      | ABRIRCHAV            |
+  7      | FUNCAO               |
+  7      | IDENTIFICADOR        | "calculariva"
+  7      | ABRIRPAR             |
+  7      | REAL                 |
+  7      | IDENTIFICADOR        | "preco"
+  7      | VIRGULA              |
+  7      | REAL                 |
+  7      | IDENTIFICADOR        | "taxa"
+  7      | FECHARPAR            |
+  7      | ABRIRCHAV            |
+  8      | RETORNA              |
+  8      | IDENTIFICADOR        | "preco"
+  8      | VEZES                |
+  8      | IDENTIFICADOR        | "taxa"
+  9      | FECHARCHAV           |
+  11     | FUNCAO               |
+  11     | IDENTIFICADOR        | "principal"
+  11     | ABRIRPAR             |
+  11     | FECHARPAR            |
+  11     | ABRIRCHAV            |
+  12     | COMENT               | "Declaração de variáveis"
+  13     | INTEIRO              |
+  13     | IDENTIFICADOR        | "quantidade"
+  13     | ATRIBUIR             |
+  13     | LIT_INTEIRO          | "50"
+  14     | REAL                 |
+  14     | IDENTIFICADOR        | "preco"
+  14     | ATRIBUIR             |
+  14     | LIT_REAL             | "99.90"
+  15     | TEXTO                |
+  15     | IDENTIFICADOR        | "produto"
+  15     | ATRIBUIR             |
+  15     | LIT_TEXTO            | "Caderno A4"
+  16     | BOOLEANO             |
+  16     | IDENTIFICADOR        | "emstock"
+  16     | ATRIBUIR             |
+  16     | VERDADEIRO           |
+  17     | CARACTERE            |
+  17     | IDENTIFICADOR        | "inicial"
+  17     | ATRIBUIR             |
+  17     | LIT_CARACTERE        | "C"
+  19     | COMENT               | "Operações aritméticas"
+  20     | REAL                 |
+  20     | IDENTIFICADOR        | "total"
+  20     | ATRIBUIR             |
+  20     | IDENTIFICADOR        | "quantidade"
+  20     | VEZES                |
+  20     | IDENTIFICADOR        | "preco"
+  21     | REAL                 |
+  21     | IDENTIFICADOR        | "iva"
+  21     | ATRIBUIR             |
+  21     | IDENTIFICADOR        | "calculariva"
+  21     | ABRIRPAR             |
+  21     | IDENTIFICADOR        | "total"
+  21     | VIRGULA              |
+  21     | LIT_REAL             | "0.23"
+  21     | FECHARPAR            |
+  22     | IDENTIFICADOR        | "total"
+  22     | ATRIBUIR             |
+  22     | IDENTIFICADOR        | "total"
+  22     | IDENTIFICADOR        | "iva"
+  24     | COMENT               | "Estrutura condicional"
+  25     | SE                   |
+  25     | ABRIRPAR             |
+  25     | IDENTIFICADOR        | "total"
+  25     | MAIORQ               |
+  25     | LIT_REAL             | "5000.0"
+  25     | FECHARPAR            |
+  25     | ABRIRCHAV            |
+  26     | MOSTRAR              |
+  26     | ABRIRPAR             |
+  26     | LIT_TEXTO            | " Volume elevado: "
+  26     | VIRGULA              |
+  26     | IDENTIFICADOR        | "total"
+  26     | FECHARPAR            |
+  27     | FECHARCHAV           |
+  27     | SENAO                |
+  27     | ABRIRCHAV            |
+  28     | MOSTRAR              |
+  28     | ABRIRPAR             |
+  28     | LIT_TEXTO            | " Volume normal: "
+  28     | VIRGULA              |
+  28     | IDENTIFICADOR        | "total"
+  28     | FECHARPAR            |
+  29     | FECHARCHAV           |
+  31     | COMENT               | "Ciclo para"
+  32     | PARA                 |
+  32     | ABRIRPAR             |
+  32     | INTEIRO              |
+  32     | IDENTIFICADOR        | "i"
+  32     | ATRIBUIR             |
+  32     | LIT_INTEIRO          | "0"
+  32     | FIMDLINHA            |
+  32     | IDENTIFICADOR        | "i"
+  32     | MENORQ               |
+  32     | LIT_INTEIRO          | "3"
+  32     | FIMDLINHA            |
+  32     | IDENTIFICADOR        | "i"
+  32     | FECHARPAR            |
+  32     | ABRIRCHAV            |
+  33     | MOSTRAR              |
+  33     | ABRIRPAR             |
+  33     | LIT_TEXTO            | " Iteração:  "
+  33     | VIRGULA              |
+  33     | IDENTIFICADOR        | "i"
+  33     | FECHARPAR            |
+  34     | FECHARCHAV           |
+  36     | COMENT               | "Ciclo enquanto"
+  37     | INTEIRO              |
+  37     | IDENTIFICADOR        | "contador"
+  37     | ATRIBUIR             |
+  37     | LIT_INTEIRO          | "0"
+  38     | ENQUANTO             |
+  38     | ABRIRPAR             |
+  38     | IDENTIFICADOR        | "contador"
+  38     | MENORQ               |
+  38     | LIT_INTEIRO          | "5"
+  38     | FECHARPAR            |
+  38     | ABRIRCHAV            |
+  39     | IDENTIFICADOR        | "contador"
+  40     | FECHARCHAV           |
+  42     | COMENT               | "Tratamento de erros"
+  43     | TENTE                |
+  43     | ABRIRCHAV            |
+  44     | INTEIRO              |
+  44     | IDENTIFICADOR        | "resultado"
+  44     | ATRIBUIR             |
+  44     | LIT_INTEIRO          | "10"
+  44     | DIVIDE               |
+  44     | LIT_INTEIRO          | "0"
+  45     | FECHARCHAV           |
+  45     | CAPTURE              |
+  45     | ABRIRPAR             |
+  45     | IDENTIFICADOR        | "erro"
+  45     | FECHARPAR            |
+  45     | ABRIRCHAV            |
+  46     | MOSTRAR              |
+  46     | ABRIRPAR             |
+  46     | LIT_TEXTO            | " Erro: divisão por zero! "
+  46     | FECHARPAR            |
+  47     | FECHARCHAV           |
+  49     | COMENT               | "Operadores lógicos"
+  50     | BOOLEANO             |
+  50     | IDENTIFICADOR        | "valido"
+  50     | ATRIBUIR             |
+  50     | ABRIRPAR             |
+  50     | IDENTIFICADOR        | "quantidade"
+  50     | MAIORQ               |
+  50     | LIT_INTEIRO          | "0"
+  50     | FECHARPAR            |
+  50     | CONJUCAO             |
+  50     | ABRIRPAR             |
+  50     | IDENTIFICADOR        | "preco"
+  50     | MAIORQ               |
+  50     | LIT_REAL             | "0.0"
+  50     | FECHARPAR            |
+  51     | BOOLEANO             |
+  51     | IDENTIFICADOR        | "inativo"
+  51     | ATRIBUIR             |
+  51     | NEGACAO              |
+  51     | IDENTIFICADOR        | "emstock"
+  53     | MOSTRAR              |
+  53     | ABRIRPAR             |
+  53     | LIT_TEXTO            | " Produto:  "
+  53     | VIRGULA              |
+  53     | IDENTIFICADOR        | "produto"
+  53     | FECHARPAR            |
+  54     | MOSTRAR              |
+  54     | ABRIRPAR             |
+  54     | LIT_TEXTO            | " Total com IVA:  "
+  54     | VIRGULA              |
+  54     | IDENTIFICADOR        | "total"
+  54     | FECHARPAR            |
+  55     | FECHARCHAV           |
+  56     | FECHARCHAV           |
+  56     | EOF                  |
+══════════════════════════════════════════════════
+  Total de tokens: 181  |  Erros léxicos: 0
+══════════════════════════════════════════════════
