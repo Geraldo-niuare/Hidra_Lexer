@@ -1,0 +1,29 @@
+// Programa 1 — Erros Léxicos Variados
+// Ficheiro: programa_erros1.hidra
+
+classe TesteErros {
+
+    funcao principal() {
+
+        // ERRO 1: Símbolo @ não existe na linguagem
+        inteiro resultado = 10 @ 5
+
+        // ERRO 2: Símbolo # não existe na linguagem
+        inteiro x = 20 # 3
+
+        // ERRO 3: Símbolo $ não é reconhecido
+        texto mensagem = "Saldo: $100"
+        inteiro saldo$ = 500
+
+        // ERRO 4: Símbolo ^ não é reconhecido
+        inteiro potencia = 2 ^ 8
+
+        // ERRO 5: Símbolo ~ não é reconhecido
+        booleano flag = ~verdadeiro
+
+        // ERRO 6: Símbolo ? não existe
+        inteiro valor = x ? 10
+
+        mostrar("Fim do teste")
+    }
+}

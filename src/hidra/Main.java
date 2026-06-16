@@ -51,9 +51,10 @@ public class Main {
                 opcao = scanner.nextInt();
                 List<TokenInfo> tokens;
 
-
-                switch (opcao){
+switch (opcao){
                     case 1:
+                        // Limpa o código de leituras anteriores para não acumular texto
+                        codigo.setLength(0); 
 
                         File file = inserirFicheiro();
 
@@ -69,20 +70,18 @@ public class Main {
                                 System.out.println("─".repeat(60));
                                 tokens = analiseLexica(codigo.toString());
                                 exibirTokens(tokens);
-                                break;
+                                // O break antigo que estava aqui dentro FOI REMOVIDO
                             }catch (FileNotFoundException e){
                                 System.out.println("Ficheiro não encontrado");
                                 e.printStackTrace();
                             }
-
                         }else{
                             System.out.println("carregue um ficheiro .hidra");
                         }
 
+                        // CORREÇÃO: O break agora protege o case 1 aqui no final, fora do try/if
+                        break; 
 
-
-
-                        break;
                     case 2:
                         codigo = new StringBuilder(programaTeste());
                         System.out.println("A usar código de teste interno.");
@@ -90,10 +89,9 @@ public class Main {
                         tokens = analiseLexica(codigo.toString());
                         exibirTokens(tokens);
                         break;
+                        
                     case 3:
                         tabelaReservadas.imprimir();
-
-
                         break;
                 }
 
@@ -103,7 +101,7 @@ public class Main {
         }
     }
 
-    //── Análise léxica ─────────────────────────────────────────────────
+   //── Análise léxica ─────────────────────────────────────────────────
     public static List<TokenInfo> analiseLexica(String codigo){
         TabelaPalavrasReservadas tabelaReservadas = new TabelaPalavrasReservadas();
         TabelaSimbolos           tabelaSimbolos   = new TabelaSimbolos();
@@ -115,7 +113,8 @@ public class Main {
         do {
             t = anaLex.AnaLex();
             tokens.add(t);
-        } while (t.getToken() != Token.EOF && t.getToken() != Token.DESCONHECIDO);
+        // Alterado para ir até ao fim do ficheiro (EOF), ignorando paragens por DESCONHECIDO
+        } while (t.getToken() != Token.EOF); 
         return tokens;
     }
 
